@@ -1,0 +1,156 @@
+/* Universual selector, stylar alla elementen övergripande om inte annat sägs(?)*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000;
+  font-family: sans-serif;
+}
+/* Här min ev. logga, titel och nav-bar är*/
+header {
+  background-color: rgb(8, 16, 18);
+  color: #fff;
+}
+
+/* Nav-bar, *display flex flyttar listan att visas horisontellt här. *justify-content gör här att set är lika stort mellanrum mellan alla listalternativ *align-items centrerar items vertikalt  */
+h1 {
+  padding-top: 8rem;
+  margin: 2rem;
+}
+header p {
+  margin: 2rem;
+  margin-left: 3rem;
+}
+
+nav {
+  background-color: #000;
+  color: #fff;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 10px 20px;
+}
+/* */
+.logo img {
+  /* för att target bilden i <a> taggen för att resize */
+  width: 40px;
+  height: 40px;
+}
+/* *list-style none tar bort *(pricken) framför listalternativen */
+.menu {
+  letter-spacing: 0.15rem;
+  display: flex;
+  list-style: none;
+}
+/* padding till vänster om listan för mellanrum från logo */
+.menu li {
+  padding-left: 60px;
+}
+
+.menu li a {
+  color: #fff;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  transition: color 0.25s ease-in-out;
+  text-transform: uppercase;
+  /* fick vit linje under texten av position relative?*/
+  position: relative;
+}
+/* när användaren tar musen över länkarna ändrar de färg */
+.menu li a:hover {
+  color: #ff9fe2;
+}
+
+/* menyn efter , hur den ser ut efter den klickats på?*/
+.menu li a::after {
+  background-color: rgb(255, 255, 255);
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  transition: 0.4s ease-in-out;
+}
+
+.menu li a:hover::after {
+  width: 100%;
+}
+/*
+nav label {
+  position: absolute;
+} */
+.open-menu,
+.close-menu {
+  position: relative;
+  color: #a6ffc8;
+  font-size: 1.5rem;
+  display: none;
+}
+.open-menu {
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50);
+}
+
+.close-menu {
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50);
+}
+
+#check {
+  display: none;
+}
+/* responsiv , centrerar innehållet osv mobil menyn*/
+@media (max-width: 610px) {
+  .menu {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    z-index: 100;
+    background-color: #000;
+    transition: /*all*/ 0.4s ease-in-out;
+  }
+  /* mellanrum mellan alternativen*/
+  .menu li {
+    margin-top: 40px;
+  }
+  .menu li a {
+    padding: 10px;
+  }
+  /* upptar typ hela utrymmet */
+  .open-menu,
+  .close-menu {
+    display: block;
+  }
+  #check:checked ~ .menu {
+    right: 0;
+  }
+}
+/* Lineup- sektionen */
+#lineup,
+#artists,
+#tickets,
+#contact {
+  background-color: rgb(37, 23, 39);
+  color: lightblue;
+  padding-top: 4rem;
+  margin: 0 2rem 2rem 2rem;
+}
+
+footer {
+  color: #ff94cd;
+}
